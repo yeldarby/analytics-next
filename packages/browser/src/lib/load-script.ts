@@ -33,6 +33,8 @@ export function loadScript(
     script.src = src
     script.async = true
 
+    if (window.crossOriginIsolated)
+      script.setAttribute('crossorigin', 'anonymous')
     script.setAttribute('status', 'loading')
     for (const [k, v] of Object.entries(attributes ?? {})) {
       script.setAttribute(k, v)
